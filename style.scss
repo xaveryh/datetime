@@ -1,0 +1,35 @@
+/* ---------- PREPROCESSING ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handjet&family=Heebo:wght@300&display=swap');
+
+$primary-font: Heebo;
+$secondary-font: Handjet;
+$fallback-font: sans-serif;
+
+/* ---------- GENERAL STYLING ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px;
+    font-family: $primary-font, $fallback-font;
+}
+
+main {
+    height: 400px;
+    width: 1000px;
+    margin: auto;
+    padding: 50px;
+    border: #2F323A 8px solid;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    border: black 1px solid;
+}
