@@ -11,5 +11,9 @@
   "dependencies": {
     "dayjs": "^1.11.9",
     "micromodal": "^0.4.10"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
