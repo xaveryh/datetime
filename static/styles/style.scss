@@ -1,0 +1,65 @@
+/* ---------- PREPROCESSING ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@700&display=swap&family=Heebo:wght@600&display=swap');
+
+$primary-font: Heebo;
+$secondary-font: Handjet;
+$fallback-font: sans-serif;
+$primary-color: #2F323A;
+$secondary-color: #BB4430;
+
+/* ---------- GENERAL STYLING ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px;
+    font-family: $primary-font, $fallback-font;
+}
+
+main {
+    height: 400px;
+    width: 1000px;
+    margin: auto;
+    padding: 80px 50px;
+    border: $primary-color 8px solid;
+    border-radius: 10px;
+}
+
+/* ---------- CONTENT SECTION --------- */
+.container-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+    .timezone {
+        font-size: 20px;
+        letter-spacing: 2px;
+        word-spacing: 5px;
+        color: $secondary-color;
+
+        &:hover {
+            cursor: pointer;
+            color: #8D6346;
+        }
+    }
+    .time {
+        font-family: $secondary-font;
+        font-size: 75px;
+    }
+    .date {
+        font-size: 22px;
+    }
+}
+
+.wrapper {
+    max-width: 350px;
+    width: 50%;
+
+}
