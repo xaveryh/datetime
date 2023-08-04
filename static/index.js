@@ -1,8 +1,6 @@
 function updateTime() {
-    if (httpRequest.readyState === 4 && httpRequest.status === 200) {
         var time = dayjs().format("HH:mm:ss")
         document.getElementById("time").innerHTML = time
-    }
 }
 
 
@@ -17,12 +15,7 @@ var now = dayjs()
 var date = now.format("dddd, D MMMM YYYY")
 var time = now.format("HH:mm:ss")
 
-const httpRequest = new XMLHttpRequest()
-httpRequest.onreadystatechange = updateTime
-httpRequest.open("GET", "http://127.0.0.1:5500/static/", "true")
-httpRequest.send()
-
-
+setInterval(updateTime, 1000)
 
 // When page is loaded...
 document.addEventListener("DOMContentLoaded", () => {
