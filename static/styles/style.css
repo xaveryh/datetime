@@ -32,6 +32,7 @@ main {
   height: 100%;
 }
 .container-main .timezone {
+  display: inline-block;
   font-size: 20px;
   letter-spacing: 2px;
   word-spacing: 5px;
@@ -40,8 +41,10 @@ main {
 .container-main .timezone:hover {
   cursor: pointer;
   color: #8D6346;
+  text-decoration: underline;
 }
 .container-main .time {
+  margin-left: 35px;
   font-family: Handjet;
   font-size: 75px;
 }

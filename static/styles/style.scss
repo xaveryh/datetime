@@ -39,6 +39,7 @@ main {
     height: 100%;
     
     .timezone {
+        display: inline-block;
         font-size: 20px;
         letter-spacing: 2px;
         word-spacing: 5px;
@@ -47,9 +48,11 @@ main {
         &:hover {
             cursor: pointer;
             color: #8D6346;
+            text-decoration: underline;
         }
     }
     .time {
+        margin-left: 35px;
         font-family: $secondary-font;
         font-size: 75px;
     }
@@ -61,5 +64,4 @@ main {
 .wrapper {
     max-width: 350px;
     width: 50%;
-
-}
+}   
