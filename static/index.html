@@ -11,11 +11,26 @@
     <main>  
         <div class="container-main">
             <div class="wrapper">
-                <a class="timezone" id="timezone" data-modal-trigger="timezone"></a> 
+                <a class="timezone" id="timezone" data-modal-trigger="modal-1"></a> 
                 <p class="time" id="time"> </p>
                 <p class="date" id="date"></p>
             </div>
         </div>
     </main>
+
+    <!-- Modal -->
+    <div class="modal-1" id="modal-1" aria-hidden="true">
+        <div class="modal-1-overlay" tabindex="-1" data-micromodal-close>  
+            <div class="modal-1__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >  
+                <header>
+                    <h2 id="modal-1-title">Modal Title</h2>
+                    <button aria-label="Close modal" data-micromodal-close></button>
+                </header>  
+                <div id="modal-1-content">
+                    Modal Content
+                </div>
+            </div>
+        </div>
+    </div>  
 </body>
 </html>

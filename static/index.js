@@ -3,15 +3,14 @@ function updateTime() {
     document.getElementById("time").innerHTML = time
 }
 
-function showModal(element) {
-    micromodal.show(element )
+function showModal() {
+    MicroModal.show("modal-1")
 }
 
 const dayjs = require("dayjs")
-const MicroModal = require("micromodal")
+const MicroModal = require("../node_modules/micromodal/dist/micromodal")
 var utc = require("dayjs/plugin/utc")
 var timezone = require("dayjs/plugin/timezone")
-
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var timeHTML = document.getElementById("time")
 
     userTimezone.innerHTML = dayjs.tz.guess()
-    userTimezone.addEventListener("click", () => { showModal(userTimezone) })
+    userTimezone.addEventListener("click", showModal)
     dateHTML.innerHTML = date
     timeHTML.innerHTML = time
 })

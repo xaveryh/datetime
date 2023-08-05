@@ -55,4 +55,22 @@ main {
 .wrapper {
   max-width: 350px;
   width: 50%;
+}
+
+/* ---------- MODAL SECTION --------- */
+.modal-1-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-1__container {
+  background: white;
 }/*# sourceMappingURL=style.css.map */
