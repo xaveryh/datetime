@@ -11,8 +11,8 @@
     <main>  
         <div class="container-main">
             <div class="wrapper">
-                <a class="timezone" id="timezone" data-modal-trigger="modal-1"></a> 
-                <p class="time" id="time"> </p>
+                <a class="current-timezone" id="current-timezone" data-micromodal-trigger="modal-1" data-custom-open="modal-1"></a> 
+                <p class="time" id="time"data-micromodal-trigger="modal-1"> </p>
                 <p class="date" id="date"></p>
             </div>
         </div>
@@ -22,13 +22,15 @@
     <div class="modal-1" id="modal-1" aria-hidden="true">
         <div class="modal-1-overlay" tabindex="-1" data-micromodal-close>  
             <div class="modal-1__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >  
-                <header>
-                    <h2 id="modal-1-title">Modal Title</h2>
-                    <button aria-label="Close modal" data-micromodal-close></button>
+                <header class="modal-1__header">
+                    <h2 id="modal-1-title">Change Timezone</h2>
+                    <img src="images/cross.png" alt="close button" class="modal-1__close-button" aria-label="Close modal" data-micromodal-close>
                 </header>  
-                <div id="modal-1-content">
-                    Modal Content
-                </div>
+                <form class="timezone" method="get">
+                    <input type="text" class="timezone_search" id="timezone-search">
+                    <select class="timezone-list" id="timezone-list"></select>
+                    <button type="submit" class="modal-1__submit" data-micromodal-close>Submit</button>
+                </form>
             </div>
         </div>
     </div>  
