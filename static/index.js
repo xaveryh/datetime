@@ -1,7 +1,7 @@
 /* ---------- Functions ---------- */
 function updateTime() {
     var time = dayjs().format("HH:mm:ss")
-    document.getElementById("time").innerHTML = time
+    $("#time").html(time);
 }
 
 function triggerModal() {
@@ -9,24 +9,28 @@ function triggerModal() {
 }
 
 function insertTimezones() {
-    var selectHTML = document.getElementById("timezone-list")
+    var selectHTML = $("#timezone-list")
     var timezoneList = Intl.supportedValuesOf("timeZone")
     timezoneList.forEach( e => {
-        newOption = document.createElement("option")
-        newOption.innerHTML = e
-        newOption.classList.add("timezone-option")
-        selectHTML.appendChild(newOption)
+        newOption = $("<option class='timezone-option'>" + e + "</option>")
+        $(selectHTML).append(newOption)
     })
 }
 
-function toggleTimezoneList() {
+function openTimezoneList() {
     var timezoneList = document.getElementById("timezone-list")
-    timezoneList.classList.toggle("is-open")
+    timezoneList.style.display = "block"
+}
+
+function closeTimezoneList() {
+    var timezoneList = document.getElementById("timezone-list")
+    timezoneList.style.display = "none"
 }
 
 /* ---------- NPM Packages ----------- */
 const dayjs = require("dayjs")
 const micromodal = require("../node_modules/micromodal/dist/micromodal")
+const $ = require("../node_modules/jquery/dist/jquery")
 var utc = require("dayjs/plugin/utc")
 var timezone = require("dayjs/plugin/timezone")
 
@@ -43,25 +47,35 @@ setInterval(updateTime, 1000)
 
 
 // When page is loaded...
-document.addEventListener("DOMContentLoaded", () => {
+$("document").ready(() => {
     // Get elements from HTML
-    var userTimezone = document.getElementById("current-timezone")
-    var dateHTML = document.getElementById("date")
-    var timeHTML = document.getElementById("time")
-    var searchTimezone = document.getElementById("timezone-search")
-
+    var userTimezone = $("#current-timezone");
+    var dateHTML = $("#date");
+    var timeHTML = $("#time");
+    var searchTimezone = $("#timezone-search")
+    var timezoneList = $("#timezone-list")
+    
     // Default timezone
-    userTimezone.innerHTML = dayjs.tz.guess()
+    $(userTimezone).html(dayjs.tz.guess());
     
     // Click to trigger modal -> change timezone
-    userTimezone.addEventListener("click", triggerModal)
+    $(userTimezone).click(triggerModal);
 
     // On search bar's focus event, toggle list of available timezones
-    searchTimezone.addEventListener("focusin", toggleTimezoneList)
+    $(searchTimezone).on("focus", openTimezoneList);
+    $(searchTimezone).on("blur", () => {
+        if (document.activeElement.id == "timezone-list") {
+            openTimezoneList()
+        }
+        else {
+            closeTimezoneList()
+        }
+    })
+    $(timezoneList).on("focusout", closeTimezoneList)
 
     // Insert date and time
-    dateHTML.innerHTML = date
-    timeHTML.innerHTML = time
-
+    $(dateHTML).html(date);
+    $(timeHTML).html(time);
+    
     insertTimezones()
 })
