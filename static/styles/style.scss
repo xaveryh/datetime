@@ -1,5 +1,6 @@
 /* ---------- PREPROCESSING ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@700&display=swap&family=Heebo:wght@600&display=swap');
+@import "../../node_modules/@selectize/selectize/dist/scss/selectize.default.scss";
 
 $primary-font: Heebo;
 $secondary-font: Handjet;
@@ -101,16 +102,11 @@ main {
     }   
     &__submit {
         display: block;
-        height: 20px;
-        width: 50px;
+        height: 30px;
+        width: 100px;
         margin: 10px auto 0 auto;
-        border-radius: 5px;
-    }
-}
-
-.timezone {
-    &-list {
-        display: none;
+        border-radius: 1px;
+        box-shadow: none;
     }
 }
 
