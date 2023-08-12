@@ -28,7 +28,9 @@
                     <img src="images/cross.png" alt="close button" class="modal-1__close-button" aria-label="Close modal" data-micromodal-close>
                 </header>  
                 <form class="timezone" method="get">
-                    <select class="timezone-list" id="timezone-list"></select>
+                    <select class="timezone-list" id="timezone-list" required>
+                        <option value=""></option>
+                    </select>
                     <button type="submit" class="modal-1__submit" id="modal-1__submit" data-micromodal-close>Submit</button> 
                 </form>
             </div>

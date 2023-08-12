@@ -1,16 +1,39 @@
 /* ---------- Functions ---------- */
-function updateTime() {
-    var time = dayjs().format("HH:mm:ss")
+function updateTime(showingTimezone) {
+    // If no timezone from the modal was selected, guess the user's timezone
+    if (showingTimezone == "") {
+        var selectedTimezone = dayjs.tz.guess()
+    }
+    // Else show the selected timezone
+    else {
+        var selectedTimezone  = showingTimezone
+    }
+    // Show current time with timezone's offset, and format the time to be readable
+    var time = dayjs().tz(selectedTimezone).format("HH:mm:ss")
+    // Display the time to html
     $("#time").html(time);
 }
 
 function updatePage() {
+    // Get chosen value from select
     var selectedTimezone = $("#timezone-list").selectize()[0].selectize.getValue();
+    // Split value to seperate timezone and GMT
     selectedTimezone = selectedTimezone.split(" ")[0];
-    var currentTimezone = $("#current-timezone");
+    // Get timezone's html display
+    var currentTimezone = $("#current-timezone")
 
-    $(currentTimezone).html(selectedTimezone)
-    
+    // If no timezone was chosen, show an error
+    if (selectedTimezone == "") {
+        alert("Please enter choose a timezone")
+    }
+    else {
+        // Display current chosen timezone
+        currentTimezone.html(selectedTimezone)
+        // Set global timezone variable to be the chosen one by the user
+        showingTimezone = selectedTimezone
+        // Revert selectizejs's option to be default
+        $("#timezone-list").selectize()[0].selectize.clear()
+    }
 }
 
 function triggerModal() {
@@ -37,7 +60,8 @@ function selectizeTzList() {
     var timezoneList = $("#timezone-list")
     $(timezoneList).selectize({
         allowEmptyOption: true,
-        showEmptyOptionInDropdown: true
+        showEmptyOptionInDropdown: true,
+        deselectBehavior: "top"
     })
 }
 
@@ -57,8 +81,9 @@ dayjs.extend(timezone)
 var now = dayjs()
 var date = now.format("dddd, D MMMM YYYY")
 var time = now.format("HH:mm:ss")
+var showingTimezone = ""
 micromodal.init()
-setInterval(updateTime, 1000)
+setInterval(() => { updateTime(showingTimezone) }, 1000)
 
 
 // When page is loaded...
@@ -82,6 +107,8 @@ $("document").ready(() => {
     $(dateHTML).html(date);
     $(timeHTML).html(time);
     
+    // Insert timezone to select options on modal open
     insertTimezones()
+    // Use selectizejs make select be searchable
     selectizeTzList()
 })
